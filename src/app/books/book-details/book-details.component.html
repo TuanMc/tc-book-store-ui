@@ -1,1 +1,29 @@
-<h1>Edit book page</h1>
+<button mat-button color="warn" routerLink="..">Back</button>
+<h1>Book Details</h1>
+<mat-grid-list cols="3">
+  <mat-grid-tile colspan="1">
+    <img [src]="bookDetails.imageUrl" alt="IMG">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <div>
+      <h3>{{bookDetails.title}}</h3>
+      <div>
+        <b>Category: </b>
+        <span>{{bookDetails.category}}</span>
+      </div>
+      <div>
+        <b>Description: </b>
+        <span>{{bookDetails.description}}</span>
+      </div>
+      <div>
+        <b>Quantity: </b>
+        <span>{{bookDetails.quantity}}</span>
+      </div>
+      <div>
+        <b>Price: </b>
+        <span>{{bookDetails.price | currency}}</span>
+      </div>
+      <button style="margin-top: 10px" mat-flat-button color="primary" (click)="handleAddToCart()">Add to cart</button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

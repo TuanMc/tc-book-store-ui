@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span>Book Store</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon aria-hidden="false" aria-label="User icon" fontIcon="account_circle"></mat-icon>
+  </button>
+  <span>Tuan</span>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Login</button>
+  </mat-menu>
+</mat-toolbar>
+<div class="bs-container">
+  <router-outlet></router-outlet>
+</div>

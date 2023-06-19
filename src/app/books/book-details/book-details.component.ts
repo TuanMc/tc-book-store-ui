@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BooksService } from '../books.service';
+import { ActivatedRoute } from '@angular/router';
+import { Book } from '../shared/book.model';
 
 @Component({
   selector: 'book-details',
@@ -7,7 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class BookDetailsComponent implements OnInit {
-  constructor() { }
+  bookId: String;
+  bookDetails: Book = new Book();
 
-  ngOnInit() { }
+  constructor(private route: ActivatedRoute, private booksService: BooksService) {
+    this.bookId = this.route.snapshot.paramMap.get("bookId") || '';
+  }
+
+  ngOnInit() {
+    this.booksService.getBookDetails(this.bookId).subscribe(res => {
+      this.bookDetails = new Book(res);
+    });
+  }
+
+  handleAddToCart(): void {
+    // this.bookDetails.addToCart(this.bookId).subscribe(res => {
+    //   console.log(res);
+    // });
+  }
 }

@@ -1,13 +1,13 @@
 export class Pagination<T> {
   page: number;
   limit: number;
-  totalPage: number;
+  totalItems: number;
   data: T[];
 
-  constructor(data: T[], page: number = 1, limit: number = 10, totalPage: number = 1) {
-    this.page = page;
-    this.limit = limit;
-    this.totalPage = totalPage;
-    this.data = data;
+  constructor(data?: T[], page?: number, limit?: number, totalItems?: number) {
+    this.page = page || 1;
+    this.limit = limit || 10;
+    this.totalItems = totalItems || 0;
+    this.data = data || [];
   }
 }

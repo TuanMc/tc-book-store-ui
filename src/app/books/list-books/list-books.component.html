@@ -1,1 +1,24 @@
-<h1>List books page</h1>
+<h1>List Books <button mat-raised-button color="primary" routerLink="add">Add a book</button></h1>
+<mat-nav-list role="navigation">
+  <mat-list-item *ngFor="let book of paginationBooks.data">
+    <img matListItemAvatar src="{{book.imageUrl}}" alt="IMG">
+    <h3 matListItemTitle>
+      {{book.title}}
+    </h3>
+    <p matListItemLine>
+      <span>{{book.price | currency}}</span>
+      <span> -- {{book.description}}</span>
+    </p>
+    <div matListItemMeta>
+      <button mat-button color="primary" [routerLink]="[book.id]">
+        View
+      </button>
+      <button mat-button color="accent" (click)="deleteBook(book.id)">
+        Delete
+      </button>
+    </div>
+  </mat-list-item>
+</mat-nav-list>
+<mat-paginator (page)="handlePageEvent($event)" [length]="paginationBooks.totalItems" [pageSize]="10"
+  [pageSizeOptions]="[10, 25, 50, 100]" [pageIndex]="paginationBooks.page - 1" aria-label="Select page">
+</mat-paginator>

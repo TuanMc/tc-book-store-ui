@@ -4,9 +4,11 @@
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon aria-hidden="false" aria-label="User icon" fontIcon="account_circle"></mat-icon>
   </button>
-  <span>Tuan</span>
+  <span>{{ userProfile?.username || "Guest" }}</span>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>Login</button>
+    <!-- <button mat-menu-item>Login</button> -->
+    <button mat-menu-item *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
+    <button mat-menu-item *ngIf="!isLoggedIn" type="button" (click)="login()">Log in</button>
   </mat-menu>
 </mat-toolbar>
 <div class="bs-container">

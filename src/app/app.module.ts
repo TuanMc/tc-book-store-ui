@@ -12,6 +12,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { initializeKeycloak } from './core/keycloak.config';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { KeycloakInterceptor } from './core/keycloak-interceptor';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,19 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
     MatIconModule,
     MatButtonModule
   ],
-  providers: [{
-    provide: APP_INITIALIZER,
-    useFactory: initializeKeycloak,
-    multi: true,
-    deps: [KeycloakService]
-  }],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: KeycloakInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { BooksService } from './../books.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NewBook } from '../shared/book.model';
 
 @Component({
   selector: 'add-book',
@@ -11,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddBookComponent implements OnInit {
   form = new FormGroup({
     title: new FormControl('', { validators: Validators.required }),
-    imageUrl: new FormControl<any>(null, { validators: Validators.required }),
+    image: new FormControl<any>(null, { validators: Validators.required }),
     category: new FormControl('', { validators: Validators.required }),
     quantity: new FormControl(0, { validators: Validators.required }),
     price: new FormControl(0, { validators: Validators.required }),
@@ -24,7 +25,8 @@ export class AddBookComponent implements OnInit {
 
   handleSubmit(): void {
     console.log(this.form.value);
-    this.booksService.addBook(this.form.value).subscribe(res => console.log(res));
+    const newBook: NewBook = new NewBook(this.form.value);
+    this.booksService.addBook(newBook).subscribe(res => console.log(res));
   }
 
   onFileSelected(event: any): void {
@@ -34,7 +36,7 @@ export class AddBookComponent implements OnInit {
       const fileName = file.name;
       console.log(fileName);
       this.form.patchValue({
-        imageUrl: file
+        image: file
       });
     }
   }

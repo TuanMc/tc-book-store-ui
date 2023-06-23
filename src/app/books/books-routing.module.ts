@@ -3,11 +3,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListBooksComponent } from './list-books/list-books.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { AdminGuard } from '../core/admin.guard';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', component: ListBooksComponent, title: 'List Book' },
-  { path: 'add', pathMatch: 'full', component: AddBookComponent, title: 'Add Book' },
-  { path: ':bookId', pathMatch: 'full', component: BookDetailsComponent, title: 'Book Details' },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: ListBooksComponent,
+    title: 'List Book'
+  },
+  {
+    path: 'add',
+    pathMatch: 'full',
+    canActivate: [AdminGuard],
+    component: AddBookComponent,
+    title: 'Add Book',
+
+  },
+  {
+    path: ':bookId',
+    pathMatch: 'full',
+    component: BookDetailsComponent,
+    title: 'Book Details'
+  },
 ]
 
 @NgModule({

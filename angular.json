@@ -97,7 +97,15 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "src/app/app.component.ts",
+              "src/app/**/*.model.ts",
+              "src/app/**/*.module.ts",
+              "src/testing/**/*.ts"
+            ],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }

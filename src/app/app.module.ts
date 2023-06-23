@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { initializeKeycloak } from './core/keycloak.config';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { KeycloakInterceptor } from './core/keycloak-interceptor';
+import { KeycloakInterceptor } from './keycloak-interceptor';
 
 @NgModule({
   declarations: [

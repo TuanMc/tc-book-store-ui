@@ -6,7 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
-  selector: 'list-books',
+  selector: 'tc-bs-list-books',
   templateUrl: 'list-books.component.html',
   styleUrls: ['list-books.component.scss']
 })

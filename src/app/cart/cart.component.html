@@ -1,0 +1,18 @@
+<button mat-button color="warn" routerLink="..">Back</button>
+<h1>Cart</h1>
+
+<mat-nav-list role="navigation">
+  <mat-list-item *ngFor="let cartItem of cart.items">
+    <img matListItemAvatar src="{{cartItem.item.imageUrl}}" alt="IMG">
+    <h3 matListItemTitle>
+      {{cartItem.item.title}} x {{cartItem.quantityInCart}}
+    </h3>
+    <p matListItemLine>
+      <span>{{cartItem.item.price | currency}}</span>
+      <span> -- {{cartItem.item.description}}</span>
+    </p>
+  </mat-list-item>
+</mat-nav-list>
+<h3>Total: {{cart.getTotalPrice() | currency}}</h3>
+<button mat-raised-button color="primary" [disabled]="cart.items.length == 0"
+  (click)="handleCheckout()">Checkout</button>

@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
   <span>Book Store</span>
   <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="cart">
+    <mat-icon [matBadge]="cart.getTotalItems()" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon aria-hidden="false" aria-label="User icon" fontIcon="account_circle"></mat-icon>
   </button>

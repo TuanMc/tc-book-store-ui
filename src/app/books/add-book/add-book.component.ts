@@ -1,10 +1,10 @@
 import { BooksService } from './../books.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewBook } from '../shared/book.model';
 
 @Component({
-  selector: 'add-book',
+  selector: 'tc-bs-add-book',
   templateUrl: 'add-book.component.html',
   styleUrls: ['add-book.component.scss']
 })

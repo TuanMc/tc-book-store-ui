@@ -1,19 +1,24 @@
+import { CartService } from './../../cart/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from '../shared/book.model';
+import { CartItem } from 'src/app/cart/shared/cart.model';
 
 @Component({
-  selector: 'book-details',
+  selector: 'tc-bs-book-details',
   templateUrl: 'book-details.component.html',
   styleUrls: ['book-details.component.scss']
 })
 
 export class BookDetailsComponent implements OnInit {
-  bookId: String;
+  bookId: string;
   bookDetails: Book = new Book();
 
-  constructor(private route: ActivatedRoute, private booksService: BooksService) {
+  constructor(
+    private route: ActivatedRoute,
+    private booksService: BooksService,
+    private cartService: CartService) {
     this.bookId = this.route.snapshot.paramMap.get("bookId") || '';
   }
 
@@ -24,8 +29,6 @@ export class BookDetailsComponent implements OnInit {
   }
 
   handleAddToCart(): void {
-    // this.bookDetails.addToCart(this.bookId).subscribe(res => {
-    //   console.log(res);
-    // });
+    this.cartService.addItem(new CartItem(this.bookId, this.bookDetails, 1, this.bookDetails.price));
   }
 }

@@ -4,16 +4,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { initializeKeycloak } from './core/keycloak.config';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { KeycloakInterceptor } from './keycloak-interceptor';
+import { initializeKeycloak } from './core/keycloak.config';
+import { KeycloakInterceptor } from './core/keycloak-interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { KeycloakInterceptor } from './keycloak-interceptor';
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatBadgeModule
   ],
   providers: [
     {

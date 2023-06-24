@@ -10,7 +10,8 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The appl
 
 - Book Store API: Check out this [Github repo](https://github.com/TuanMc/tc-book-store-api)
 
-- Keycloak: Follow the steps in this [doc](https://www.keycloak.org/guides#getting-started) to start **keycloak server** locally
+- Keycloak: Follow the steps in this [doc](https://www.keycloak.org/guides#getting-started) 
+  - ```bin/kc.bat start-dev``` to start **keycloak server** locally
 
 ## Build
 

@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,9 +15,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { initializeKeycloak } from './core/keycloak.config';
 import { KeycloakInterceptor } from './core/keycloak-interceptor';
 
+import { AppComponent } from './app.component';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { UnauthorizedComponent } from './error-pages/unauthorized/unauthorized.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

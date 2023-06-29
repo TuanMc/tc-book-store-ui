@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { UrlTree } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
 
 @Injectable({
@@ -8,15 +8,17 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class AdminGuard {
 
-  constructor(private keycloakService: KeycloakService) { }
+  constructor(private keycloakService: KeycloakService, private router: Router) { }
   canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.keycloakService.getKeycloakInstance().authenticated) {
-      this.keycloakService.login();
-      return false;
+
+    const isAdmin = this.keycloakService.getUserRoles().some((role) => role === 'default-roles-book-store');
+    if (!isAdmin) {
+      this.router.navigate(['unauthorized']);
+      return isAdmin;
     }
 
     return true;

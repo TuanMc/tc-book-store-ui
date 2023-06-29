@@ -4,6 +4,7 @@ import { ListBooksComponent } from './list-books/list-books.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { AdminGuard } from '../core/admin.guard';
+import { AuthorizedGuard } from '../core/authorized.guard';
 
 export const routes: Routes = [
   {
@@ -15,14 +16,14 @@ export const routes: Routes = [
   {
     path: 'add',
     pathMatch: 'full',
-    canActivate: [AdminGuard],
+    canActivate: [AuthorizedGuard, AdminGuard],
     component: AddBookComponent,
     title: 'Add Book',
-
   },
   {
     path: ':bookId',
     pathMatch: 'full',
+    canActivate: [AuthorizedGuard],
     component: BookDetailsComponent,
     title: 'Book Details'
   },
